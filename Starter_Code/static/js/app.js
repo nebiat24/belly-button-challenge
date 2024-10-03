@@ -48,7 +48,7 @@ function buildCharts(sample) {
     let sample_values = indiv_data.sample_values
 
     // Build a Bubble Chart
-    bubbletrace = {
+    traceBubble = {
       x: otu_ids,
       y: sample_values,
       mode: 'markers',
@@ -60,7 +60,7 @@ function buildCharts(sample) {
     }
 
     // Render the Bubble Chart
-    let bubbleplot_data = [bubbletrace];
+    let bubbleplot_data = [traceBubble];
     let bubbleplot_layout = {title: 'Bacteria Cultures per Sample'};
     Plotly.newPlot('bubble',bubbleplot_data,bubbleplot_layout);
 
@@ -71,7 +71,7 @@ function buildCharts(sample) {
 
     // Build a Bar Chart
     // Don't forget to slice and reverse the input data appropriately
-    bartrace = {
+    traceBar = {
       x: sample_values.slice(0,10).reverse(),
       type: 'bar',
       orientation: 'h',
@@ -79,9 +79,9 @@ function buildCharts(sample) {
       y: otu_strings.slice(0,10).reverse(),
     };
 
-    bardata = [bartrace];
+    bardata = [traceBar];
     barlayout = {
-      title: 'Top 10 Bacteria Cultures Found in Sample',
+      title: 'Top 10 Bacteria Cultures Found',
     }
 
 
@@ -100,7 +100,7 @@ function init() {
     names = data.names
 
     // Use d3 to select the dropdown with id of `#selDataset`
-    dropdown = document.getElementById('selDataset') // Thanks to Xpert for this line.
+    dropdown = document.getElementById('selDataset') 
 
     // Use the list of sample names to populate the select options
     // Hint: Inside a loop, you will need to use d3 to append a new
